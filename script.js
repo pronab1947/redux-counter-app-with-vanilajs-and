@@ -12,13 +12,13 @@ const DECREMENT = 'decrement';
 const increment = (value) => {
     return {
         type: INCREMENT,
-        payload: value
+        payload: value  // Butun click listener এর মধ্যে increment() এ যে value দেয়া থাকবে সেটি reseve করবে, এখানে increment function "increment(5)" এ 5 দেয়া আছে value হিসাবে 5 resive করবে।
     }
 }
 const decrement = (value) => {
     return {
         type: DECREMENT,
-        payload: value
+        payload: value // Butun click listener এর মধ্যে decrement() এ যে value দেয়া থাকবে সেটি reseve করবে, এখানে decrement function "decrement(2)" এ 2 দেয়া আছে value হিসাবে 2 resive করবে।
     }
 }
 // initial state..........................................
