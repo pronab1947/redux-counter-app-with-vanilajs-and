@@ -2,8 +2,25 @@
 //select DOM element.....................................
 const counterEl = document.getElementById('counter');
 const incrementEl = document.getElementById('increment');
-const decrementEl = document.getElementById('decrement')
+const decrementEl = document.getElementById('decrement');
 
+//Action identifiers.......................
+const INCREMENT = 'increment';
+const DECREMENT = 'decrement';
+
+//Action Creator.........................................
+const increment = (value) => {
+    return {
+        type: INCREMENT,
+        payload: value
+    }
+}
+const decrement = (value) => {
+    return {
+        type: DECREMENT,
+        payload: value
+    }
+}
 // initial state..........................................
 const initialState = {
     value: 0,
@@ -11,12 +28,12 @@ const initialState = {
 
 // create reducer function.................................
 const counterReducer = (state = initialState, action) => {
-    if (action.type === 'increment') {
+    if (action.type === INCREMENT) {
         return {
             ...state,
             value: state.value + action.payload,
         };
-    } else if (action.type === 'decrement') {
+    } else if (action.type === DECREMENT) {
         return {
             ...state,
             value: state.value - action.payload,
@@ -43,16 +60,10 @@ store.subscribe(render);
 // Butun click listener(type & payload)......................
 
 incrementEl.addEventListener('click', () => {
-    store.dispatch({
-        type: 'increment',
-        payload: 5
-    })
+    store.dispatch(increment(10))
 });
 
 decrementEl.addEventListener('click', () => {
-    store.dispatch({
-        type: 'decrement',
-        payload: 2
-    })
+    store.dispatch(decrement(5))
 });
 
