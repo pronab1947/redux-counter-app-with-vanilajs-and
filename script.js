@@ -14,12 +14,12 @@ const counterReducer = (state = initialState, action) => {
     if (action.type === 'increment') {
         return {
             ...state,
-            value: state.value + 1,
+            value: state.value + action.payload,
         };
     } else if (action.type === 'decrement') {
         return {
             ...state,
-            value: state.value - 1,
+            value: state.value - action.payload,
         };
     } else {
         return state;
@@ -36,21 +36,23 @@ const render = () => {
 
 };
 //update UI initially.......................
-render()
+render() // *** UI এ প্রাথমিক state = 0 সেটি দেখাবে
 
 store.subscribe(render);
 
-// Butun click listener......................
+// Butun click listener(type & payload)......................
 
 incrementEl.addEventListener('click', () => {
     store.dispatch({
-        type: 'increment'
+        type: 'increment',
+        payload: 5
     })
 });
 
 decrementEl.addEventListener('click', () => {
     store.dispatch({
-        type: 'decrement'
+        type: 'decrement',
+        payload: 2
     })
 });
 
